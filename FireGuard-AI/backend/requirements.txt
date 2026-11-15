@@ -1,0 +1,15 @@
+# Backend runtime dependencies. The backend imports the project's `ml` package for
+# preprocessing and inference, so torch/torchvision/opencv are runtime requirements too.
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.3
+sqlalchemy>=2.0
+python-multipart>=0.0.9
+reportlab>=4.2
+pillow>=10.3
+numpy>=1.26
+pandas>=2.2
+opencv-python-headless>=4.9
+torch>=2.4
+torchvision>=0.19

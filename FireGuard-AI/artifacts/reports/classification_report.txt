@@ -1,0 +1,10 @@
+FireGuard AI - test set classification report (threshold 0.26)
+
+              precision    recall  f1-score   support
+
+    non_fire     0.9961    1.0000    0.9980       253
+        fire     1.0000    0.9959    0.9979       241
+
+    accuracy                         0.9980       494
+   macro avg     0.9980    0.9979    0.9980       494
+weighted avg     0.9980    0.9980    0.9980       494

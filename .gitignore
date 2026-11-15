@@ -1,0 +1,16 @@
+# Local Claude Code / editor settings (contain machine-specific paths)
+.claude/
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Reports generated locally by generate_report.py (the workflow archives them in weekly_reports/)
+/*_Progress_Report_Form-3_*.pdf
+/*_Final_Report_*.pdf
+
+# OS
+.DS_Store
+Thumbs.db

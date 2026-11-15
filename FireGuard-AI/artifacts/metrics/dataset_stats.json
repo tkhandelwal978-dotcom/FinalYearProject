@@ -1,0 +1,64 @@
+{
+  "seed": 42,
+  "split_fractions": {
+    "train": 0.7,
+    "validation": 0.15,
+    "test": 0.15
+  },
+  "sources": [
+    {
+      "key": "fire_dataset",
+      "title": "FIRE Dataset (Saied, 2018)",
+      "license": "CC0: Public Domain",
+      "url": "https://www.kaggle.com/datasets/phylake1337/fire-dataset",
+      "citation": "A. Saied, FIRE Dataset, Kaggle, 2018.",
+      "images_used": 927
+    },
+    {
+      "key": "deepfire",
+      "title": "Forest Fire Dataset / DeepFire (Khan et al., 2022)",
+      "license": "CC BY 4.0",
+      "url": "https://www.kaggle.com/datasets/alik05/forest-fire-dataset",
+      "citation": "A. Khan, B. Hassan, S. Khan, R. Ahmed, A. Abuassba, 'DeepFire: A Novel Dataset and Deep Transfer Learning Benchmark for Forest Fire Detection', Mobile Information Systems, 2022.",
+      "images_used": 1868
+    },
+    {
+      "key": "wildfire_detection",
+      "title": "Wildfire Detection Image Data",
+      "license": "Open Database License (ODbL)",
+      "url": "https://www.kaggle.com/datasets/brsdincer/wildfire-detection-image-data",
+      "citation": "B. Dincer, Wildfire Detection Image Data, Kaggle.",
+      "images_used": 497
+    }
+  ],
+  "raw_images_found": 4799,
+  "unlabelled_skipped": {
+    "fire_dataset": 0,
+    "deepfire": 0,
+    "wildfire_detection": 0
+  },
+  "corrupted_or_too_small_removed": 0,
+  "duplicates_removed": 1507,
+  "conflicting_label_images_removed": 0,
+  "final_images": 3292,
+  "class_totals": {
+    "non_fire": 1686,
+    "fire": 1606
+  },
+  "split_counts": {
+    "train": {
+      "non_fire": 1180,
+      "fire": 1124
+    },
+    "validation": {
+      "non_fire": 253,
+      "fire": 241
+    },
+    "test": {
+      "non_fire": 253,
+      "fire": 241
+    }
+  },
+  "phash_threshold": 8,
+  "max_stored_side": 512
+}
