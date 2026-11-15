@@ -1,0 +1,143 @@
+{
+  "model_name": "FireGuard EfficientNet-B0",
+  "model_version": "1.0.0",
+  "architecture": "EfficientNet-B0 + custom head (GAP -> BatchNorm -> Dropout -> Dense -> Sigmoid)",
+  "framework": "PyTorch 2.14.1+cu126",
+  "class_names": [
+    "non_fire",
+    "fire"
+  ],
+  "class_display_names": {
+    "fire": "FIRE DETECTED",
+    "non_fire": "NO FIRE DETECTED"
+  },
+  "positive_class": "fire",
+  "decision_threshold": 0.26,
+  "threshold_tuning": {
+    "source": "validation set",
+    "min_fire_recall": 0.95,
+    "threshold": 0.26,
+    "f1": 0.9958677685950413,
+    "recall": 1.0,
+    "met_recall_target": true
+  },
+  "preprocessing": {
+    "image_size": [
+      224,
+      224
+    ],
+    "resize": "direct (no crop), bilinear, antialiased",
+    "color_mode": "RGB",
+    "scale": "pixel / 255",
+    "normalize_mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "normalize_std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "hyperparameters": {
+    "seed": 42,
+    "image_size": 224,
+    "batch_size": 32,
+    "num_workers": 4,
+    "head_epochs": 5,
+    "head_lr": 0.001,
+    "fine_tune_epochs": 15,
+    "fine_tune_lr": 0.0001,
+    "fine_tune_blocks": 3,
+    "dropout": 0.3,
+    "weight_decay": 1e-05,
+    "lr_patience": 2,
+    "lr_factor": 0.3,
+    "early_stopping_patience": 5,
+    "min_fire_recall": 0.95,
+    "use_amp": true
+  },
+  "pos_weight": 1.0498220640569396,
+  "total_parameters": 4011389,
+  "trainable_parameters_fine_tune": 3159581,
+  "train_class_counts": {
+    "non_fire": 1180,
+    "fire": 1124
+  },
+  "validation_class_counts": {
+    "non_fire": 253,
+    "fire": 241
+  },
+  "epochs_run": 19,
+  "best_epoch": 14,
+  "best_val_loss": 0.03440679659452365,
+  "device": "NVIDIA GeForce RTX 2050",
+  "training_started_utc": "2026-11-15T10:40:40.480574+00:00",
+  "training_finished_utc": "2026-11-15T10:43:28.422812+00:00",
+  "training_duration_minutes": 2.8,
+  "dataset": {
+    "seed": 42,
+    "split_fractions": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15
+    },
+    "sources": [
+      {
+        "key": "fire_dataset",
+        "title": "FIRE Dataset (Saied, 2018)",
+        "license": "CC0: Public Domain",
+        "url": "https://www.kaggle.com/datasets/phylake1337/fire-dataset",
+        "citation": "A. Saied, FIRE Dataset, Kaggle, 2018.",
+        "images_used": 927
+      },
+      {
+        "key": "deepfire",
+        "title": "Forest Fire Dataset / DeepFire (Khan et al., 2022)",
+        "license": "CC BY 4.0",
+        "url": "https://www.kaggle.com/datasets/alik05/forest-fire-dataset",
+        "citation": "A. Khan, B. Hassan, S. Khan, R. Ahmed, A. Abuassba, 'DeepFire: A Novel Dataset and Deep Transfer Learning Benchmark for Forest Fire Detection', Mobile Information Systems, 2022.",
+        "images_used": 1868
+      },
+      {
+        "key": "wildfire_detection",
+        "title": "Wildfire Detection Image Data",
+        "license": "Open Database License (ODbL)",
+        "url": "https://www.kaggle.com/datasets/brsdincer/wildfire-detection-image-data",
+        "citation": "B. Dincer, Wildfire Detection Image Data, Kaggle.",
+        "images_used": 497
+      }
+    ],
+    "raw_images_found": 4799,
+    "unlabelled_skipped": {
+      "fire_dataset": 0,
+      "deepfire": 0,
+      "wildfire_detection": 0
+    },
+    "corrupted_or_too_small_removed": 0,
+    "duplicates_removed": 1507,
+    "conflicting_label_images_removed": 0,
+    "final_images": 3292,
+    "class_totals": {
+      "non_fire": 1686,
+      "fire": 1606
+    },
+    "split_counts": {
+      "train": {
+        "non_fire": 1180,
+        "fire": 1124
+      },
+      "validation": {
+        "non_fire": 253,
+        "fire": 241
+      },
+      "test": {
+        "non_fire": 253,
+        "fire": 241
+      }
+    },
+    "phash_threshold": 8,
+    "max_stored_side": 512
+  }
+}

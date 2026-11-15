@@ -1,0 +1,21 @@
+# FireGuard AI - full Python environment (ML pipeline + backend + tests). Python 3.11 / 3.12.
+#
+# PyTorch: for NVIDIA GPU acceleration install the CUDA build first, e.g.
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+# then `pip install -r requirements.txt` (the CPU build is pulled in otherwise).
+torch>=2.4
+torchvision>=0.19
+numpy>=1.26
+pandas>=2.2
+matplotlib>=3.8
+scikit-learn>=1.4
+opencv-python-headless>=4.9
+pillow>=10.3
+imagehash>=4.3
+tqdm>=4.66
+kagglehub>=0.3
+
+-r backend/requirements.txt
+
+pytest>=8.0
+httpx>=0.27

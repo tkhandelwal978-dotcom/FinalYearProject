@@ -1,0 +1,11 @@
+{
+  "class_names": [
+    "non_fire",
+    "fire"
+  ],
+  "display_names": {
+    "fire": "FIRE DETECTED",
+    "non_fire": "NO FIRE DETECTED"
+  },
+  "positive_index": 1
+}

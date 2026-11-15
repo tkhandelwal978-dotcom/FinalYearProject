@@ -1,0 +1,19 @@
+{
+  "image_size": [
+    224,
+    224
+  ],
+  "resize": "direct (no crop), bilinear, antialiased",
+  "color_mode": "RGB",
+  "scale": "pixel / 255",
+  "normalize_mean": [
+    0.485,
+    0.456,
+    0.406
+  ],
+  "normalize_std": [
+    0.229,
+    0.224,
+    0.225
+  ]
+}
