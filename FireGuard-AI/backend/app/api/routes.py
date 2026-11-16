@@ -7,6 +7,8 @@ from typing import Literal
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile
 from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import Response
+from datetime import datetime, timezone
+import json
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
@@ -14,6 +16,7 @@ from app.api.deps import get_db, get_model_service, get_prediction_service, get_
 from app.core.config import Settings
 from app.schemas.prediction import DeleteResponse, PaginatedPredictions, PredictionOut
 from app.schemas.system import AnalyticsOut, HealthOut, ModelInfoOut
+from app.schemas.sensor import SensorTelemetryIn, SensorTelemetryOut
 from app.services.analytics_service import compute_analytics
 from app.services.model_info_service import build_model_info
 from app.services.model_service import ModelService
@@ -24,6 +27,21 @@ from app.utils.image_validation import validate_upload
 
 router = APIRouter(prefix="/api")
 ClassFilter = Literal["fire", "non_fire"]
+
+
+@router.post("/sensors/telemetry", response_model=SensorTelemetryOut, status_code=201,
+             tags=["sensors"], summary="Receive Raspberry Pi sensor telemetry")
+def receive_sensor_telemetry(
+    payload: SensorTelemetryIn,
+    settings: Settings = Depends(get_settings_dep),
+) -> SensorTelemetryOut:
+    """Append one validated sensor reading to local JSONL storage."""
+    settings.storage_dir.mkdir(parents=True, exist_ok=True)
+    target = settings.storage_dir / "sensor_telemetry.jsonl"
+    record = payload.model_dump(mode="json")
+    with target.open("a", encoding="utf-8") as stream:
+        stream.write(json.dumps(record, separators=(",", ":")) + "\\n")
+    return SensorTelemetryOut(status="received", received_at=datetime.now(timezone.utc))
 
 
 @router.post("/predict", response_model=PredictionOut, status_code=201, tags=["prediction"],
