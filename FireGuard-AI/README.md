@@ -377,3 +377,16 @@ Captured from the running application with real model predictions.
 FireGuard AI is a decision-support and educational project. Its accuracy is measured on public datasets that do not
 cover every real-world condition (night scenes, CCTV compression, smoke-only fires). Never use it as a replacement for
 certified fire detection and alarm systems.
+
+
+## Raspberry Pi IoT hardware extension
+
+The optional `hardware/` module supports Raspberry Pi 4 sensor acquisition using DHT11,
+MQ-2 via MCP3008, and a digital IR flame sensor. See [hardware/README.md](hardware/README.md)
+for wiring and setup notes. Configure the actual DHT11 and flame GPIO pins in
+`hardware/config.py` before running `python -m hardware.run_monitor` on the Pi.
+
+The backend accepts validated sensor records at `POST /api/sensors/telemetry` and appends
+them to `backend/storage/sensor_telemetry.jsonl`. This endpoint is separate from the
+existing image prediction endpoint. Sensor thresholds are prototype rules, not certified
+fire-safety limits.
